@@ -382,6 +382,16 @@
                 opacity: 1;
             }
         }
+        .banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f0f0f0;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.1);
+}
 
     </style>
 </head>
@@ -404,6 +414,28 @@
     </nav>
 </header>
 
+<div id="banner" class="banner">
+    <p>For Placing An Order Please Contact Us On <a href="https://instagram.com/im.print0">Instagram</a> </p>
+    <button id="okButton">OK</button>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const banner = document.getElementById('banner');
+    const okButton = document.getElementById('okButton');
+
+    // Check if user has already interacted with the banner before
+    if (!localStorage.getItem('bannerClosed')) {
+        banner.style.display = 'block';
+    }
+
+    // Event listener for the OK button
+    okButton.addEventListener('click', function() {
+        banner.style.display = 'none'; // Hide the banner
+        localStorage.setItem('bannerClosed', true); // Store that the banner has been closed
+    });
+});
+</script>
+    
 <section class="hero" id="home">
     <div class="hero-content">
         <h1>Welcome to Imprint</h1>
